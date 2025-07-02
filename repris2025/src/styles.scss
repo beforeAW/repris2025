@@ -262,7 +262,64 @@ button {
   }
 }
 
+.weather-section {
 
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.weather-today-icon {
+  font-size: 2.5rem;
+}
+
+.weather-today-info {
+  margin-bottom: 1.5rem;
+}
+
+.weather-hour-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.weather-hour-item {
+  min-width: 4.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.weather-hour-item .weather-hour-icon {
+  font-size: 1.5rem;
+}
+
+.weather-hour-item .weather-hour-precip,
+.weather-hour-item .weather-hour-wind {
+  font-size: 0.85rem;
+}
+
+.weather-daily-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.weather-daily-item {
+  min-width: 7rem;
+  text-align: center;
+}
+
+.weather-daily-item .weather-daily-icon {
+  font-size: 2rem;
+}
 
 .main-content {
   max-width: 80rem;
