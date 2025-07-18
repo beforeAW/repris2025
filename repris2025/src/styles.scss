@@ -472,18 +472,33 @@ section {
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: stretch;
+
+    .schedule-table-item {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   @media (min-width: 620px) and (max-width: 999px) {
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: stretch;
+    
+    .schedule-table-item {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   @media (max-width: 619px) {
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: stretch;
+
+    .schedule-table-item {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   .menu-list.menu-list-vertical {
