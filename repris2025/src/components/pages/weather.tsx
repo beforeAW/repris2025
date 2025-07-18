@@ -1,5 +1,34 @@
 import { useEffect, useState } from 'react';
 
+interface CurrentWeather {
+  temperature: number;
+  windspeed: number;
+  winddirection: number;
+  weathercode: number;
+}
+
+interface DailyWeather {
+  time: string[];
+  temperature_2m_max: number[];
+  temperature_2m_min: number[];
+  precipitation_sum: number[];
+  weathercode: number[];
+}
+
+interface HourlyWeather {
+  time: string[];
+  temperature_2m: number[];
+  precipitation: number[];
+  weathercode: number[];
+  winddirection_10m: number[];
+}
+
+interface WeatherApiResponse {
+  current_weather: CurrentWeather;
+  daily: DailyWeather;
+  hourly: HourlyWeather;
+}
+
 const WEATHER_API =
   'https://api.open-meteo.com/v1/forecast?latitude=56.82940&longitude=16.41137&current_weather=true&hourly=temperature_2m,precipitation,weathercode,winddirection_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=auto';
 
@@ -36,7 +65,7 @@ function degToCompass(num: number) {
 }
 
 const WeatherPage = () => {
-  const [weather, setWeather] = useState<any>(null);
+  const [weather, setWeather] = useState<WeatherApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -64,8 +93,16 @@ const WeatherPage = () => {
   const hourly = weather.hourly;
   const today = daily.time[0];
 
-  const todayHours = hourly.time
-    .map((t: string, i: number) => ({
+  interface TodayHour {
+    hour: string;
+    date: string;
+    temp: number;
+    precip: number;
+    code: number;
+    winddir: number;
+  }
+  const todayHours: TodayHour[] = hourly.time
+    .map((t: string, i: number): TodayHour => ({
       hour: t.slice(11, 16),
       date: t.slice(0, 10),
       temp: hourly.temperature_2m[i],
@@ -73,7 +110,7 @@ const WeatherPage = () => {
       code: hourly.weathercode[i],
       winddir: hourly.winddirection_10m[i],
     }))
-    .filter((h: any) => h.date === today);
+    .filter((h: TodayHour) => h.date === today);
 
   return (
     <div>
@@ -88,7 +125,7 @@ const WeatherPage = () => {
         </div>
         <h2>Timme för timme</h2>
         <ul className="weather-hour-list">
-          {todayHours.map((h: any, i: number) => (
+          {todayHours.map((h, i) => (
             <li key={i} className="weather-hour-item">
               <div style={{fontWeight: 600}}>{h.hour}</div>
               <div className="weather-hour-icon">{weatherIcons[h.code] || '❓'}</div>
