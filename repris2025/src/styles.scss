@@ -462,10 +462,131 @@ section {
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 900px) {
+  @media (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     align-items: stretch;
+  }
+
+  @media (min-width: 1000px) and (max-width: 1299px) {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  @media (min-width: 620px) and (max-width: 999px) {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  @media (max-width: 619px) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .menu-list.menu-list-vertical {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+
+    @media (min-width: 600px) and (max-width: 899px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 900px) and (max-width: 1299px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 1300px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Galaxy Z Fold 5 portrait: ~344px, landscape: ~653px */
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      .menu-table-item {
+        max-width: 98vw;
+        min-width: 180px;
+        padding: 0.5rem 0.2rem 0.8rem 0.2rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (min-width: 401px) and (max-width: 700px) {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+
+      .menu-table-item {
+        max-width: 95vw;
+        min-width: 220px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 701px) and (max-width: 899px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+
+      .menu-table-item {
+        max-width: 340px;
+        min-width: 220px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .menu-table-item {
+        max-width: 340px;
+        min-width: 220px;
+      }
+    }
+  }
+
+  .menu-table-item {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 1rem rgba(44, 70, 151, 0.08);
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-width: 180px;
+    max-width: 340px;
+    border: 1px solid #e0e7ef;
+    transition: box-shadow 0.2s, transform 0.2s;
+    overflow: hidden;
+    justify-self: center;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 1rem;
+        color: #242424;
+        padding: 0.2rem 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      strong {
+        font-size: 1.1rem;
+        color: $primary-color;
+      }
+    }
+
+    @media (max-width: 599px) {
+      max-width: 95vw;
+      padding: 0.7rem 0.3rem 1rem 0.3rem;
+    }
   }
 }
 
@@ -478,13 +599,13 @@ section {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 280px;
+  width: 240px;
   height: 480px;
   border: 1px solid #e0e7ef;
   transition: box-shadow 0.2s, transform 0.2s;
   overflow: hidden;
 
-  @media (min-width: 900px) {
+  @media (min-width: 700px) {
     width: 240px;
     height: 520px;
     margin-bottom: 0;
