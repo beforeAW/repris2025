@@ -43,7 +43,7 @@ const MenuPage = ()=>{
         </ul>
       </section>
       <section>        <a
-          href="/src/assets/kokbok-repris-2025.pdf"
+          href="/kokbok-repris-2025.pdf"
           className="menu-pdf-btn"
           target="_blank"
           rel="noopener noreferrer"
